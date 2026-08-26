@@ -1,4 +1,10 @@
 .vscode/**
 .vscode-test/**
 .gitignore
+.vscodeignore
+node_modules/**
+pnpm-lock.yaml
+pnpm-workspace.yaml
+syntaxes/kit.YAML-tmLanguage
+tests/**
 vsc-extension-quickstart.md

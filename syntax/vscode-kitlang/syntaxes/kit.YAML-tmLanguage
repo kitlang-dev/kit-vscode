@@ -32,11 +32,11 @@ patterns:
     name: support.type.function.return.kit
   match: '\b((function *)\((((([a-z_][a-zA-Z0-9_]*\.)+)?[A-Z][a-zA-Z0-9_\[\]]*)(, ))*((([a-z_][a-zA-Z0-9_]*\.)+)?[A-Z][a-zA-Z0-9_\[\]]*)\) *(->) *((([a-z_][a-zA-Z0-9_]*\.)+)?[A-Z][a-zA-Z0-9_\[\]]*))'
 - name: keyword.control.kit
-  match: \b(import|include|function|implement|specialize|using|macro|rule|rules|typedef|trait)\b
+  match: \b(import|include|function|implement|specialize|specialise|extend|using|macro|rule|rules|typedef|trait)\b
 - name: storage.modifier.kit
   match: \b(private|public|static|inline)\b
 - name: keyword.other.kit
-  match: \b(return|throw|for|as|in|if|then|else|do|while|match|default|unsafe|implicit|sizeof|continue|break)\b
+  match: \b(return|throw|for|as|in|if|then|else|do|while|match|default|unsafe|implicit|sizeof|continue|break|defer|defined|empty|undefined|yield|tokens)\b
 - name: storage.type.kit
   match: \b(struct|enum|union|abstract|var|const)\b
 - name: comment.line.debug.kit
@@ -48,26 +48,34 @@ patterns:
   end: '\*/'
 - name: punctuation.separator.comma.kit
   match: ','
+- name: keyword.operator.cons.kit
+  match: '::'
 - name: punctuation.separator.colon.kit
   match: ':'
 - name: punctuation.separator.semicolon.kit
   match: ;
 - name: keyword.control.arrow.kit
-  match: '=>'
+  match: '=>|->'
 - name: constant.numeric.decimal.kit
-  match: '-?[0-9]+(\.[0-9]+)?(_([ui](8|16|32|64)|f(32|64)))?\b'
+  match: '-?[0-9]+(\.[0-9]+)?(_([ui](8|16|32|64)|f(32|64)|[cis]))?\b'
 - name: constant.numeric.octal.kit
-  match: '-?0o[0-7]+(_([ui](8|16|32|64)|f(32|64)))?\b'
+  match: '-?0o[0-7]+(_([ui](8|16|32|64)|f(32|64)|[cis]))?\b'
 - name: constant.numeric.hex.kit
-  match: '-?0x[0-9a-f]+(_([ui](8|16|32|64)|f(32|64)))?\b'
+  match: '-?0x[0-9a-fA-F]+(_([ui](8|16|32|64)|f(32|64)|[cis]))?\b'
 - name: constant.numeric.bin.kit
-  match: '-?0b[01]+(_([ui](8|16|32|64)|f(32|64)))?\b'
+  match: '-?0b[01]+(_([ui](8|16|32|64)|f(32|64)|[cis]))?\b'
 - name: keyword.operator.kit
   match: '(?<![\*\/\+\-\^\=\<\>\!\&\%\~\@\?\:\.])(<<=|>>=|<<|>>)(?![\*\/\+\-\^\=\<\>\!\&\%\~\@\?\:\.])'
 - name: keyword.operator.logical.kit
   match: '(?<![\*\/\+\-\^\=\<\>\!\&\%\~\@\?\:\.])(==|<=|>=|!=|>|<|\|\||&&|!)(?![\*\/\+\-\^\=\<\>\!\&\%\~\@\?\:\.])'
 - name: keyword.operator.kit
-  match: '(?<![\*\/\+\-\^\=\<\>\!\&\%\~\@\?\:\.])((=|-|\+|--|\+\+|\*|%|&|\^|\||\~|\/|-=|\+=|\*=|\/=|%=)|((?<=[^\.])\.\.\.(?=[^\.]))|((?<=[^\.])\.(?=[^\.])))(?![\*\/\+\-\^\=\<\>\!\&\%\~\@\?\:\.])'
+  match: '(?<![\*\/\+\-\^\=\<\>\!\&\%\~\@\?\:\.])((\&\&=|\|\|=|&=|\|=|\^=|-=|\+=|\*=|\/=|%=|=|-|\+|--|\+\+|\*|%|&|\^|\||\~|\/)|((?:^|(?<=[^\.]))\.\.\.(?=[^\.]))|((?:^|(?<=[^\.]))\.(?=[^\.])))(?![\*\/\+\-\^\=\<\>\!\&\%\~\@\?\:\.])'
+- name: meta.preprocessor.rewrite.identifier.kit
+  match: '\$[A-Za-z0-9_]+\b'
+- name: variable.other.backtick.kit
+  match: '``[^`]+``|`[^`]+`'
+- name: variable.other.at.kit
+  match: '@[a-z_][a-zA-Z0-9_]*'
 - name: keyword.operator.custom.kit
   match: '[\*\/\+\-\^\=\<\>\!\&\%\~\@\?\:\.]+'
 - name: variable.language.kit
@@ -85,11 +93,12 @@ patterns:
   match: 'c((\''.\'')|(\''\\[abefnrtv\\\''\"?]\'')|(\''\\[01234567]{1,3}\'')|(\''\\x[0123456789aAbBcCdDeEfF]{2}\''))'
 - name: string.quoted.single.kit
   match: '''(?:\\''|[^''])*'''
+- name: string.quoted.inline-c.kit
+  begin: '```'
+  end: '```'
 - name: constant.language.kit
   match: \b(true|false|null)\b
-- name: keyword.operator.expression.kit
-  match: '(```( )*:(?=( )*\b[A-Z][a-zA-Z0-9_]*\b( )*;))|(```)'
-- name: markup.heading.metadata.kit
+- name: meta.annotation.kit
   begin: '\#\['
   end: '\]'
 - name: variable.function.main.kit
@@ -104,8 +113,6 @@ patterns:
   match: '(((?<=function )\b[a-z_][A-Za-z0-9_]*(?=\[[A-Z][A-Za-z0-9_]*\]\()))|(\b[a-z_][A-Za-z0-9_]*(?=\()\b)'
 - name: variable.parameter.kit
   match: '\b[a-z_][A-Za-z0-9_]*\b'
-- name: meta.preprocessor.rewrite.identifier.kit
-  match: '\$[A-Za-z0-9_]+\b'
 - captures:
   '1':
     name: meta.preprocessor.rewrite.dollarsign.kit

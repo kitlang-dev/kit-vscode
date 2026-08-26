@@ -2,14 +2,32 @@
     "name": "kitlang",
     "displayName": "Kit",
     "description": "Kit programming language support",
-    "version": "0.0.1",
+    "version": "0.1.0",
     "publisher": "kitlang",
+    "license": "LGPL-3.0",
     "engines": {
-        "vscode": "^1.25.0"
+        "vscode": "^1.80.0"
     },
     "categories": [
         "Programming Languages"
     ],
+    "keywords": [
+        "kit",
+        "kitlang",
+        "syntax",
+        "highlighting"
+    ],
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/kitlang-dev/kit-vscode.git"
+    },
+    "bugs": {
+        "url": "https://github.com/kitlang-dev/kit-vscode/issues"
+    },
+    "galleryBanner": {
+        "color": "#1e1e1e",
+        "theme": "dark"
+    },
     "contributes": {
         "languages": [{
             "id": "kit",
@@ -20,7 +38,18 @@
         "grammars": [{
             "language": "kit",
             "scopeName": "source.kit",
-            "path": "./syntaxes/kit.tmLanguage"
+            "path": "./syntaxes/kit.tmLanguage.json"
         }]
+    },
+    "scripts": {
+        "build": "js-yaml syntaxes/kit.YAML-tmLanguage > syntaxes/kit.tmLanguage.json",
+        "pretest": "npm run build",
+        "test": "vscode-tmgrammar-test -g syntaxes/kit.tmLanguage.json 'tests/**/*.kit'",
+        "package": "npm run build && vsce package --no-dependencies"
+    },
+    "devDependencies": {
+        "@vscode/vsce": "^2.15.0",
+        "js-yaml": "^4.1.0",
+        "vscode-tmgrammar-test": "^0.1.0"
     }
 }

@@ -1,0 +1,10 @@
+# Build-script approval (pnpm 11 stores this in pnpm-workspace.yaml).
+#
+# @vscode/vsce-sign: Microsoft official. postinstall copies the platform-specific
+#   signing binary from an already-installed npm optional dependency into bin/.
+# keytar: atom/node-keytar (MIT). install script downloads a prebuilt N-API binary
+#   from the upstream GitHub releases, or compiles the local source via node-gyp.
+#   It is an optional dependency of @vscode/vsce (OS keychain storage for publish).
+allowBuilds:
+  "@vscode/vsce-sign": true
+  keytar: true

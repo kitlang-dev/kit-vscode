@@ -1,11 +1,36 @@
 # Kit language support for Visual Studio Code
 
-This is the official Visual Studio Code extension for Kit.
+Syntax highlighting and language support for the [Kit programming language](https://kitlang.org/).
 
 ## Features
 
-- Syntax highlighting
+- Full syntax highlighting for Kit source files (`.kit`).
+- Block comments, inline C blocks, character literals, and backtick identifiers.
+- Support for Kit-specific constructs: `trait`, `implement`, `rule`/`rules`, `specialise`, `rewrite`, etc.
 
-## Planned Features
+## LSP Support
 
-- Language server implementation
+A Language Server Protocol implementation is **coming soon**.
+
+## Installation
+
+### From VS Code Marketplace
+Search for "Kit" in the Extensions view (`Ctrl+Shift+X`).
+
+### From VSIX
+```bash
+pnpm run package
+code --install-extension *.vsix
+```
+
+## Development
+
+```bash
+pnpm install
+pnpm run build        # generate JSON grammar from YAML source
+pnpm test             # run grammar unit tests
+```
+
+## License
+
+LGPL-3.0

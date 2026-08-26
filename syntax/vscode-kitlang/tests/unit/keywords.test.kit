@@ -1,0 +1,21 @@
+// SYNTAX TEST "source.kit" "keywords"
+
+function hello
+// <-------- keyword.control.kit
+import "foo"
+// <---- keyword.control.kit
+struct Point
+// <---- storage.type.kit
+private var x: Int
+// <------ storage.modifier.kit
+//      ^^^ storage.type.kit
+//           ^ punctuation.separator.colon.kit
+//             ^^^ support.type.kit
+if true
+// <-- keyword.other.kit
+//   ^^^^ constant.language.kit
+return false
+// <---- keyword.other.kit
+//      ^^^^^ constant.language.kit
+trait Printable
+// <---- keyword.control.kit
