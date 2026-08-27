@@ -1,0 +1,63 @@
+{
+    "name": "lsp",
+    "displayName": "Kit LSP",
+    "description": "Language server support for the Kit programming language (placeholder)",
+    "version": "0.1.0",
+    "publisher": "kitlang",
+    "license": "MIT",
+    "engines": {
+        "vscode": "^1.80.0"
+    },
+    "categories": [
+        "Programming Languages"
+    ],
+    "keywords": [
+        "kit",
+        "kitlang",
+        "lsp",
+        "language-server"
+    ],
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/kitlang-dev/kit-vscode.git"
+    },
+    "bugs": {
+        "url": "https://github.com/kitlang-dev/kit-vscode/issues"
+    },
+    "devDependencies": {
+        "@vscode/vsce": "^2.15.0"
+    },
+    "contributes": {
+        "configuration": {
+            "title": "Kit LSP",
+            "properties": {
+                "kitlang.lsp.enable": {
+                    "type": "boolean",
+                    "default": true,
+                    "description": "Enable the Kit language server."
+                },
+                "kitlang.lsp.serverPath": {
+                    "type": ["string", "null"],
+                    "default": null,
+                    "description": "Path to the Kit language server binary. When null, a bundled server is used."
+                },
+                "kitlang.lsp.trace": {
+                    "type": "string",
+                    "enum": ["off", "messages", "verbose"],
+                    "default": "off",
+                    "description": "Trace level for the language server protocol."
+                },
+                "kitlang.lsp.telemetry": {
+                    "type": "boolean",
+                    "default": false,
+                    "description": "Allow the language server to collect anonymous usage data."
+                }
+            }
+        }
+    },
+    "scripts": {
+        "build": "true",
+        "test": "node -e \"JSON.parse(require('fs').readFileSync('package.json','utf8'))\"",
+        "package": "vsce package --no-dependencies"
+    }
+}

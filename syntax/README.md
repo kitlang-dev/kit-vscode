@@ -33,4 +33,5 @@ pnpm test             # run grammar unit tests
 
 ## License
 
-LGPL-3.0
+LGPL-3.0. The license text is the repository-root `LICENSE` file, symlinked into
+this folder as `syntax/LICENSE`.

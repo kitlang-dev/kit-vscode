@@ -6,30 +6,31 @@ on:
   pull_request:
     branches: [ main ]
 
-defaults:
-  run:
-    working-directory: syntax/vscode-kitlang
-
 jobs:
   test:
     runs-on: ubuntu-latest
-
+    strategy:
+      matrix:
+        project: [syntax, language-server]
+    defaults:
+      run:
+        working-directory: ${{ matrix.project }}
     steps:
-    - uses: actions/checkout@v4
+      - uses: actions/checkout@v4
 
-    - uses: actions/setup-node@v4
-      with:
-        node-version: 22
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
 
-    - uses: pnpm/action-setup@v4
-      with:
-        version: 11
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 11
 
-    - name: Install dependencies
-      run: pnpm install
+      - name: Install dependencies
+        run: pnpm install
 
-    - name: Build
-      run: pnpm run build
+      - name: Build
+        run: pnpm run build
 
-    - name: Test
-      run: pnpm test
+      - name: Test
+        run: pnpm test

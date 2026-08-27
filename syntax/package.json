@@ -1,7 +1,7 @@
 {
-    "name": "kitlang",
-    "displayName": "Kit",
-    "description": "Kit programming language support",
+    "name": "syntax",
+    "displayName": "Kit Syntax",
+    "description": "Kit programming language syntax highlighting",
     "version": "0.1.0",
     "publisher": "kitlang",
     "license": "LGPL-3.0",
