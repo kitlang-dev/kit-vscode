@@ -1,6 +1,6 @@
 # Kit language support for Visual Studio Code
 
-Syntax highlighting and language support for the [Kit programming language](https://kitlang.org/).
+Syntax highlighting and language support for the [Kit programming language](https://kitlang.dev/).
 
 ## Features
 
@@ -33,5 +33,4 @@ pnpm test             # run grammar unit tests
 
 ## License
 
-LGPL-3.0. The license text is the repository-root `LICENSE` file, symlinked into
-this folder as `syntax/LICENSE`.
+LGPL-3.0. The full license text is in [`LICENSE`](./LICENSE) in this folder.

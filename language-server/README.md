@@ -1,6 +1,6 @@
 # Kit LSP
 
-Placeholder VSCode extension for the [Kit](https://kitlang.org/) language server
+Placeholder VSCode extension for the [Kit](https://kitlang.dev/) language server
 (`kitlang.lsp`).
 
 This extension currently contributes **sample configuration options only** and
