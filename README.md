@@ -1,8 +1,11 @@
 # kit-vscode
 
-This repository hosts the official VSCode tooling for the [Kit programming
-language](https://kitlang.dev/). It contains a few independent extensions, each
-published under its own ID and license:
+This repository hosts VSCode tooling for the [Kit programming
+language](https://kitlang.dev/). This project is a fork of
+[AlexPoulsen/kit-vscode](https://github.com/AlexPoulsen/kit-vscode).
+
+It contains a few independent extensions, each published under its own ID and
+license:
 
 | Extension | ID | Path |
 |-----------|---------------|------|
@@ -29,8 +32,11 @@ README.
 
 ## License
 
-This repository deliberately has no single root license: each extension has its
-own `LICENSE` file in its folder.
+This repository is [REUSE](https://reuse.software)-compliant; license texts live
+in [`LICENSES/`](./LICENSES) and per-file declarations are in
+[`REUSE.toml`](./REUSE.toml). Each extension carries its own `LICENSE` file
+(symlinked to `LICENSES/<SPDX>.txt`) so `vsce` packages it as `LICENSE.txt`.
 
-- [`language-server`](./language-server): **MIT** (see [`language-server/LICENSE`](./language-server/LICENSE)).
+- [`language-server`](./language-server): **MIT** (see
+  [`language-server/LICENSE`](./language-server/LICENSE)).
 - [`syntax`](./syntax): **LGPL-3.0** (see [`syntax/LICENSE`](syntax/LICENSE)).
